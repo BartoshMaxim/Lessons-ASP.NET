@@ -1,0 +1,50 @@
+﻿@model Lesson1.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-theme.css" />
+</head>
+<body>
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp.example.com";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "mySmtpUsername";
+            WebMail.Password = "mySmtpPassword";
+            WebMail.From = "myemai@example.com";
+
+            WebMail.Send("myemail@example.com", "RSVP Приглашение",
+                Model.Name + ((Model.WillAttend ?? false) ? "" : "не") + "придет");
+        }
+        catch(Exception)
+        {
+            @:<b>К сожалению при отправке письма возникла ошибка</b>
+        }
+    }
+    <div class="text-center">
+        <h1>Спасибо, @Model.Name!</h1>
+        <div class="lead">
+            @if (Model.WillAttend == true)
+            {
+                @:Здорово что вы прийдете, напитки в холодильнике;)
+    }
+            else
+            {
+                @:Жаль что вы не прийдете, но спасибо что дали об этом знать;)
+    }
+        </div>
+    </div>
+</body>
+</html>

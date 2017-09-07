@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-theme.css" />
+</head>
+<body>
+    <div class="text-center"> 
+        
+        <h2>@ViewBag.Greeting, мы собираемся на захватывающую вечеринку.</h2>
+        <h3>И вы приглашены, нужно только заполнить форму</h3>
+        <br />
+        <div class="btn btn-success">
+            @Html.ActionLink("Форма RSVP", "RsvpForm")
+        </div>
+    </div>
+</body>
+</html>

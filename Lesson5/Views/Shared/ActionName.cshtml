@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ActionName";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>Контроллер: <strong>@ViewBag.Controller</strong></div>
+    <div>Метод действия: <strong>@ViewBag.Action</strong></div>
+    <div>
+        URL: @Url.Action("Index","Home", new { id = "ID"})
+    </div>
+    <div>
+        @Html.ActionLink("Сгенерированный URL для ссылки", "CustomVariable", new { id="Hi"})
+        @Html.ActionLink("Сгенерированный URL для ссылки", "Index", "Home", null,
+            new
+            {
+                id = "myAhrefID",
+                @class = "myCSSClass"
+            })
+        @Html.ActionLink("Сгенерированный URL для ссылки", "Index", "Home",
+            "https", "google.com", "fragmentName",
+            new { id = "MyId" },
+            new { id = "myAhrefID", @class = "myCSSClass" })
+    </div>
+</body>
+</html>
